@@ -8,9 +8,13 @@ var priceFilterInput = document.getElementById('priceFilterInput');
 var genreFilterButton = document.getElementById('genreFilterButton');
 var genreFilterInput = document.getElementById('genreFilterInput');
 
+var ratingFilterButton = document.getElementById('ratingFilterButton');
+var ratingFilterInput = document.getElementById('ratingFilterInput');
+
 switchButton.addEventListener("click", switchScreens);
 priceFilterButton.addEventListener("click", filterPrice);
 genreFilterButton.addEventListener("click", filterGenre);
+ratingFilterButton.addEventListener("click", filterRating);
 
 
 console.log(overzichtScherm, winkelmandjeScherm);
@@ -90,6 +94,13 @@ function filterPrice() {
 function filterGenre() {
     var gekozenGenre = genreFilterInput.value;
     var filteredList = games.filter(game => game.genre === gekozenGenre);
+    console.log(filteredList);
+    renderGames(filteredList);
+}
+
+function filterRating() {
+    var maxRating = parseFloat(ratingFilterInput.value);
+    var filteredList = games.filter(game => parseFloat(game.rating) <= maxRating);
     console.log(filteredList);
     renderGames(filteredList);
 }
