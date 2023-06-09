@@ -74,7 +74,7 @@ function renderWinkelMandjeContent() {
     winkelmandjeScherm.appendChild(winkelmandList);
 
     var prijsElem = document.createElement('p');
-    prijsElem.innerText = totalPrice;
+    prijsElem.innerText = "Total price: €" + totalPrice.toFixed(2);
     winkelmandjeScherm.appendChild(prijsElem);
 
 }
@@ -114,6 +114,8 @@ function renderGames(gamesToRender) {
         var gameBox = document.createElement("div");
         gameBox.classList.add("gameBoxStyle");
         var titelElem = document.createElement("h2");
+        var genreElem = document.createElement("p");
+        var ratingElem = document.createElement("p");
         var selectGameButton = document.createElement("input");
 
         selectGameButton.type = "checkbox";
@@ -121,6 +123,8 @@ function renderGames(gamesToRender) {
         // stap 2 zet de titel in het element
         gameBox.innerText = game.price;
         titelElem.innerText = game.title;
+        genreElem.innerText = game.genre;
+        ratingElem.innerText = game.rating + "★";
 
         selectGameButton.dataset.price = game.price;
         selectGameButton.dataset.name = game.title;
@@ -129,6 +133,8 @@ function renderGames(gamesToRender) {
         // stap 3 zet het hele element op het scherm
         gameBox.appendChild(selectGameButton);
         gameBox.appendChild(titelElem);
+        gameBox.appendChild(genreElem);
+        gameBox.appendChild(ratingElem);
         overzichtScherm.appendChild(gameBox);
 
     });
