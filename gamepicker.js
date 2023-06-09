@@ -5,8 +5,12 @@ var switchButton = document.getElementById('switchButton');
 var priceFilterButton = document.getElementById('priceFilterButton');
 var priceFilterInput = document.getElementById('priceFilterInput');
 
+var genreFilterButton = document.getElementById('genreFilterButton');
+var genreFilterInput = document.getElementById('genreFilterInput');
+
 switchButton.addEventListener("click", switchScreens);
 priceFilterButton.addEventListener("click", filterPrice);
+genreFilterButton.addEventListener("click", filterGenre);
 
 
 console.log(overzichtScherm, winkelmandjeScherm);
@@ -82,6 +86,14 @@ function filterPrice() {
     console.log(filteredList);
     renderGames(filteredList);
 }
+
+function filterGenre() {
+    var gekozenGenre = genreFilterInput.value;
+    var filteredList = games.filter(game => game.genre === gekozenGenre);
+    console.log(filteredList);
+    renderGames(filteredList);
+}
+
 
 function renderGames(gamesToRender) {
     overzichtScherm.innerHTML = "<h1>scherm overzicht</h1>";
